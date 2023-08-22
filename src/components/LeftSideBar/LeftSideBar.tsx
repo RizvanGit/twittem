@@ -1,11 +1,12 @@
-import { FC, Fragment } from "react";
+import { FC } from "react";
 import { NAVIGATION_ITEMS } from "@/constants";
 import { BsThreeDots } from "react-icons/bs";
 import Link from "next/link";
+import { ButtonPrime } from "..";
 
 const LeftSideBar: FC = () => {
   return (
-    <Fragment>
+    <section className="fixed w-[275px] flex flex-col h-screen items-stretch">
       <div className="flex flex-col h-full space-y-4 items-stretch mt-4">
         {NAVIGATION_ITEMS.map((item) => {
           return (
@@ -21,9 +22,7 @@ const LeftSideBar: FC = () => {
             </Link>
           );
         })}
-        <button className="m-4 rounded-full bg-primary p-4 text-2xl text-center hover:bg-opacity-80 transition duration-200">
-          Tweet
-        </button>
+        <ButtonPrime title="Tweet" className="text-2xl p-4 m-4" />
       </div>
       <button className="flex items-center flex-grow space-x-2 m-4 rounded-full bg-transparent p-4 text-2xl text-center hover:bg-white/20 transition duration-200">
         <div className="rounded-full bg-slate-400 w-10 h-10"></div>
@@ -35,7 +34,7 @@ const LeftSideBar: FC = () => {
           <BsThreeDots />
         </div>
       </button>
-    </Fragment>
+    </section>
   );
 };
 
