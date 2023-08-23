@@ -1,3 +1,4 @@
 import { IButtonPrimeProps } from "./buttons";
+import { IWindowSize } from "./window-size";
 
-export type { IButtonPrimeProps };
+export type { IButtonPrimeProps, IWindowSize };
