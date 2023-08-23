@@ -16,6 +16,9 @@ const config: Config = {
       colors: {
         primary: "rgb(29, 155, 240)",
       },
+      boxShadow: {
+        b: "0 0 5px rgb(29, 155, 240) ",
+      },
     },
   },
   plugins: [],
