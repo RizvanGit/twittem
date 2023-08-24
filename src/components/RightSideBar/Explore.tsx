@@ -3,12 +3,10 @@ import { Search } from "..";
 
 const Explore: FC = () => {
   return (
-    <section className="w-[350px] space-y-4 mr-2 hidden lg:flex lg:flex-col">
-      <div className="relative">
-        <div className="sticky top-0">
-          <div className="min-h-[32px] h-[53px] mb-3 relative">
-            <Search className="fixed top-0 z-20 mt-2 w-[350px]" />
-          </div>
+    <section className="w-[350px] space-y-4 mr-2 hidden lg:flex lg:flex-col relative">
+      <div className="sticky bottom-0 w-full">
+        <div className="min-h-[32px] h-[53px] mb-3 relative">
+          <Search className="fixed top-0 z-30 mt-2 w-[350px]" />
         </div>
         <div className="flex flex-col rounded-xl bg-neutral-800/70 my-4">
           <h3 className="font-bold text-2xl my-2 py-2 px-3">

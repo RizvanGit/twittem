@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 import { ButtonPrime, Search } from "@/components";
 import { BsChat, BsDot, BsThreeDots } from "react-icons/bs";
@@ -8,7 +9,10 @@ const Timeline: FC = () => {
   return (
     <section className="flex w-full max-w-[600px] h-full min-h-screen flex-col border-x-2 border-x-gray-700/60">
       <div className="sticky top-0 my-4">
-        <h1 className="text-xl font-bold p-4 backdrop-blur bg-black/10">
+        <h1
+          onClick={() => window.scrollTo({ top: 0 })}
+          className="text-xl font-bold p-4 backdrop-blur cursor-pointer bg-black/10"
+        >
           Home
         </h1>
         <Search className="absolute top-0 right-0 lg:hidden my-1 mr-1 w-[250px]" />
