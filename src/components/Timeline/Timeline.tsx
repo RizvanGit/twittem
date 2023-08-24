@@ -8,7 +8,7 @@ import { IoShareOutline, IoStatsChart } from "react-icons/io5";
 const Timeline: FC = () => {
   return (
     <section className="flex w-full max-w-[600px] h-full min-h-screen flex-col border-x-2 border-x-gray-700/60">
-      <div className="sticky top-0 my-4">
+      <div className="sticky top-0">
         <h1
           onClick={() => window.scrollTo({ top: 0 })}
           className="text-xl font-bold p-4 backdrop-blur cursor-pointer bg-black/10"
@@ -50,22 +50,24 @@ const Timeline: FC = () => {
               <div className="flex mt-2 items-center justify-between">
                 <div className="flex items-center space-x-1 sm:space-x-2">
                   <div className="block sm:hidden w-10 h-10 bg-slate-200 rounded-full"></div>
-                  <div className="flex items-start sm:flex-row sm:space-x-2 flex-col justify-start">
+                  <div className="flex items-center sm:flex-row sm:space-x-2 flex-col justify-start">
                     <div className="font-bold">Club of Coders</div>
-                    <div className="text-sm text-gray-200/60">
+                    <div className="text-sm text-secondary-foreground">
                       @clubofcoders
                     </div>
                   </div>
                   <div className="text-gray-200/60">
                     <BsDot />
                   </div>
-                  <div className="text-sm text-gray-200/60">2 hours ago</div>
+                  <div className="text-sm text-secondary-foreground">
+                    2 hours ago
+                  </div>
                 </div>
-                <div className="text-gray-200/60 rounded-full p-2 hover:bg-white/10 transition duration-200 cursor-pointer">
+                <div className="text-secondary-foreground rounded-full p-2 hover:bg-white/10 transition duration-200 cursor-pointer">
                   <BsThreeDots />
                 </div>
               </div>
-              <div className="text-white text-sm font-normal mt-2">
+              <div className="text-foreground text-sm font-normal mt-2">
                 Lorem ipsum dolor sit amet, officia excepteur ex fugiat
                 reprehenderit enim labore culpa sint ad nisi Lorem pariatur
                 mollit ex esse exercitation amet. Nisi anim cupidatat excepteur

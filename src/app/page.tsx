@@ -2,7 +2,7 @@ import { LeftSideBar, Timeline, Explore } from "@/components";
 
 export default function Home() {
   return (
-    <div className="w-full h-full flex justify-center items-center bg-black">
+    <div className="w-full h-full flex justify-center items-center">
       <div className="max-w-screen-xl w-full h-full flex relative">
         <LeftSideBar />
         <main role="main" className="flex w-[990px] items-stretch  shrink">
