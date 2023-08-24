@@ -11,7 +11,7 @@ const Timeline: FC = () => {
         <h1 className="text-xl font-bold p-4 backdrop-blur bg-black/10">
           Home
         </h1>
-        <Search className="absolute top-0 right-0 lg:hidden my-1 mr-1" />
+        <Search className="absolute top-0 right-0 lg:hidden my-1 mr-1 w-[250px]" />
       </div>
       <div className="flex items-stretch p-4 space-x-2 border-y-2 border-y-gray-700/60">
         <div className="h-10 w-10 bg-slate-400 rounded-full flex-none"></div>
@@ -37,16 +37,21 @@ const Timeline: FC = () => {
         {Array.from({ length: 5 }).map((_, i) => (
           <div
             key={i}
-            className="px-4 py-2 border-b-2 border-b-gray-700/60 flex space-x-4"
+            className="px-1 sm:px-4 py-2 border-b-2 border-b-gray-700/60 flex space-x-2 sm:space-x-4"
           >
-            <div className="mt-1">
+            <div className="sm:block hidden mt-1">
               <div className="w-10 h-10 bg-slate-200 rounded-full"></div>
             </div>
             <div className="flex flex-col">
               <div className="flex mt-2 items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <div className="font-bold">Club of Coders</div>
-                  <div className="text-sm text-gray-200/60">@clubofcoders</div>
+                <div className="flex items-center space-x-1 sm:space-x-2">
+                  <div className="block sm:hidden w-10 h-10 bg-slate-200 rounded-full"></div>
+                  <div className="flex items-start sm:flex-row sm:space-x-2 flex-col justify-start">
+                    <div className="font-bold">Club of Coders</div>
+                    <div className="text-sm text-gray-200/60">
+                      @clubofcoders
+                    </div>
+                  </div>
                   <div className="text-gray-200/60">
                     <BsDot />
                   </div>

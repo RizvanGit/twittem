@@ -4,7 +4,7 @@ import { BsSearch } from "react-icons/bs";
 
 const Search: FC<ISearchProps> = ({ className }) => {
   return (
-    <div className={`${className} w-[350px] rounded-xl`}>
+    <div className={`${className} rounded-xl`}>
       <input
         id="searchTwittem"
         type="text"
