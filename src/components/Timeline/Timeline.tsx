@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ButtonPrime } from "@/components";
+import { ButtonPrime, Search } from "@/components";
 import { BsChat, BsDot, BsThreeDots } from "react-icons/bs";
 import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 import { IoShareOutline, IoStatsChart } from "react-icons/io5";
@@ -7,9 +7,12 @@ import { IoShareOutline, IoStatsChart } from "react-icons/io5";
 const Timeline: FC = () => {
   return (
     <section className="flex w-full max-w-[600px] h-full min-h-screen flex-col border-x-2 border-x-gray-700/60">
-      <h1 className="text-xl font-bold my-4 p-4 backdrop-blur bg-black/10 sticky top-0">
-        Home
-      </h1>
+      <div className="sticky top-0 my-4">
+        <h1 className="text-xl font-bold p-4 backdrop-blur bg-black/10">
+          Home
+        </h1>
+        <Search className="absolute top-0 right-0 lg:hidden my-1 mr-1" />
+      </div>
       <div className="flex items-stretch p-4 space-x-2 border-y-2 border-y-gray-700/60">
         <div className="h-10 w-10 bg-slate-400 rounded-full flex-none"></div>
         <div className="flex flex-col w-full">

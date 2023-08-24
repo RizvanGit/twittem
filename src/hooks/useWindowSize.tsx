@@ -1,5 +1,5 @@
 import { IWindowSize } from "@/types";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState<IWindowSize>({
@@ -18,7 +18,7 @@ export const useWindowSize = () => {
       timer = setTimeout(() => func(), delay);
     };
   };
-  const debounce = debounceFunction(resizeHandler, 110);
+  const debounce = debounceFunction(resizeHandler, 50);
 
   useEffect(() => {
     window.addEventListener("resize", debounce);

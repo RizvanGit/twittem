@@ -6,6 +6,8 @@ import Link from "next/link";
 import { ButtonPrime } from "..";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
+const currentWindowWidth = window.innerWidth;
+
 const LeftSideBar: FC = () => {
   const size = useWindowSize();
   let isWidthWide: boolean;
@@ -16,7 +18,7 @@ const LeftSideBar: FC = () => {
       isWidthWide = false;
     }
   } else {
-    if (window.innerWidth > 1220) {
+    if (currentWindowWidth > 1220) {
       isWidthWide = true;
     } else {
       isWidthWide = false;
@@ -25,7 +27,7 @@ const LeftSideBar: FC = () => {
   return (
     <header
       role="banner"
-      className={`relative flex flex-col h-screen items-stretch ${isWidthWide ? "w-[275px]" : "w-[75px]"
+      className={`relative flex flex-col h-screen shrink-0 items-stretch ${isWidthWide ? "w-[275px]" : "w-[75px]"
         }`}
     >
       <div
