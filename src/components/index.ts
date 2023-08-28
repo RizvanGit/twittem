@@ -4,5 +4,16 @@ import Tweet from "./Tweet/Tweet";
 import Timeline from "./Timeline/Timeline";
 import Search from "./ui/Search/Search";
 import Explore from "./RightSideBar/Explore";
+import Login from "./Login/Login";
+import AuthModal from "./ui/AuthModal/AuthModal";
 
-export { LeftSideBar, ButtonPrime, Tweet, Timeline, Search, Explore };
+export {
+  LeftSideBar,
+  ButtonPrime,
+  Tweet,
+  Timeline,
+  Search,
+  Explore,
+  Login,
+  AuthModal,
+};

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ButtonPrime } from "..";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
-const currentWindowWidth = window.innerWidth;
+let currentWindowWidth: number = window.innerWidth;
 
 const LeftSideBar: FC = () => {
   const size = useWindowSize();
@@ -27,14 +27,12 @@ const LeftSideBar: FC = () => {
   return (
     <header
       role="banner"
-      className={`relative flex flex-col h-screen shrink-0 items-stretch ${
-        isWidthWide ? "w-[275px]" : "w-[75px]"
-      }`}
+      className={`relative flex flex-col h-screen shrink-0 items-stretch ${isWidthWide ? "w-[275px]" : "w-[75px]"
+        }`}
     >
       <div
-        className={`fixed top-0 h-full ${
-          isWidthWide ? "w-[275px]" : "w-[75px]"
-        }`}
+        className={`fixed top-0 h-full ${isWidthWide ? "w-[275px]" : "w-[75px]"
+          }`}
       >
         <div className="flex flex-col w-full  h-full space-y-4 items-stretch mt-4">
           {NAVIGATION_ITEMS.map((item) => {
@@ -42,9 +40,8 @@ const LeftSideBar: FC = () => {
               <Link
                 href={`/${item.title.toLowerCase()}`}
                 key={item.title}
-                className={`flex items-center w-fit justify-start ${
-                  isWidthWide ? "py-2 px-6" : "py-2 px-4 mx-auto"
-                } hover:bg-white/10 transition duration-200 rounded-3xl text-2xl space-x-4 `}
+                className={`flex items-center w-fit justify-start ${isWidthWide ? "py-2 px-6" : "py-2 px-4 mx-auto"
+                  } hover:bg-white/10 transition duration-200 rounded-3xl text-2xl space-x-4 `}
               >
                 <div>
                   <item.icon />

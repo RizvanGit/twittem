@@ -6,7 +6,10 @@ const Explore: FC = () => {
     <section className="w-[350px] space-y-4 mr-2 hidden lg:flex lg:flex-col relative text-light">
       <div className="sticky bottom-0 w-full">
         <div className="min-h-[32px] h-[53px] mb-3 relative">
-          <Search className="fixed top-0 z-30 mt-2 w-[350px]" />
+          <Search
+            id="searchExplorer"
+            className="fixed top-0 z-30 mt-2 w-[350px]"
+          />
         </div>
         <div className="flex flex-col rounded-xl bg-backgoundtransparent my-4">
           <h3 className="font-bold text-2xl my-2 py-2 px-3">
