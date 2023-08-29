@@ -1,18 +1,13 @@
 "use client";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useState } from "react";
 import { ButtonPrime } from "..";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { Toaster, toast } from "sonner";
-import { Database } from "@/lib/database.types";
+import { ILoginProps } from "@/types";
+import { FC } from "react";
 
-export default function Login() {
-  const supabase = createClientComponentClient<Database>();
-
+const Login: FC<ILoginProps> = ({ checkValue }) => {
   return (
     <div className="relative">
-      <Toaster position="top-left" richColors />
       <form
         action="/auth/login"
         method="post"
@@ -25,24 +20,14 @@ export default function Login() {
             name="username"
             min="3"
             onBlur={async (e) => {
-              if (
-                e.target.value.trim().length < 4 &&
-                e.target.value.length !== 0
-              ) {
+              const value = e.target.value;
+              if (value.trim().length < 4 && value.length !== 0) {
                 e.target.classList.remove("border-green-800");
                 e.target.classList.add("border-red-800");
               } else if (e.target.value.length === 0) {
               } else {
                 e.target.classList.remove("border-red-800");
-                const { data, error } = await supabase
-                  .from("profiles")
-                  .select()
-                  .eq("username", e.target.value);
-                if (data && data?.length > 0) {
-                  toast.success("User founded");
-                } else {
-                  toast("No such user, you can sign up");
-                }
+                checkValue(value);
               }
             }}
           />
@@ -82,4 +67,6 @@ export default function Login() {
       </form>
     </div>
   );
-}
+};
+
+export default Login;
