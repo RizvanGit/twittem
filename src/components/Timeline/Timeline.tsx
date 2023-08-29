@@ -4,9 +4,8 @@ import { ButtonPrime, Search } from "@/components";
 import { BsChat, BsDot, BsThreeDots } from "react-icons/bs";
 import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 import { IoShareOutline, IoStatsChart } from "react-icons/io5";
-import { ITimelineProps } from "@/types";
 
-const Timeline: FC<ITimelineProps> = ({ user }) => {
+const Timeline: FC = () => {
   return (
     <section className="flex w-full max-w-[600px] h-full min-h-screen flex-col border-x-2 border-x-gray-700/60">
       <div className="sticky top-0">
@@ -17,9 +16,6 @@ const Timeline: FC<ITimelineProps> = ({ user }) => {
           >
             Home
           </h1>
-          <p className="text-sm text-gray-300 italic mr-2">
-            {user ? `Hello, ${user}` : ""}
-          </p>
         </div>
         <Search
           id="searchTimeline"

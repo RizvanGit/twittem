@@ -9,7 +9,8 @@ export default function AuthModal({ isAuth }: IAuthModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent>
+      <DialogContent className="text-center">
+        <h3>Please sign in to access all features</h3>
         <Login />
       </DialogContent>
     </Dialog>
