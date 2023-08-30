@@ -6,6 +6,7 @@ import Search from "./ui/Search/Search";
 import Explore from "./RightSideBar/Explore";
 import Login from "./Login/Login";
 import AuthModal from "./ui/AuthModal/AuthModal";
+import ComposeTweet from "./Tweet/ComposeTweet";
 
 export {
   LeftSideBar,
@@ -16,4 +17,5 @@ export {
   Explore,
   Login,
   AuthModal,
+  ComposeTweet,
 };

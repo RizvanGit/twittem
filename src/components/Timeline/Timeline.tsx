@@ -1,9 +1,10 @@
 "use client";
 import { FC } from "react";
-import { ButtonPrime, Search } from "@/components";
+import { ButtonPrime, Search, ComposeTweet } from "@/components";
 import { BsChat, BsDot, BsThreeDots } from "react-icons/bs";
 import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 import { IoShareOutline, IoStatsChart } from "react-icons/io5";
+import NewTweet from "@/app/tweet/new-tweet";
 
 const Timeline: FC = () => {
   return (
@@ -24,23 +25,7 @@ const Timeline: FC = () => {
       </div>
       <div className="flex items-stretch p-4 space-x-2 border-y-2 border-y-gray-700/60">
         <div className="h-10 w-10 bg-slate-400 rounded-full flex-none"></div>
-        <div className="flex flex-col w-full">
-          <input
-            type="text"
-            className="w-full h-full bg-transparent outline-none p-4 placeholder:text-xl placeholder:text-gray-600"
-            placeholder="What's happening?"
-          />
-          <div className="w-full flex justify-between items-center">
-            <div></div>
-            <div className="w-full max-w-[100px]">
-              <ButtonPrime
-                isTwitterLogo={false}
-                title="Tweet"
-                className="py-1 text-lg font-bold w-full"
-              />
-            </div>
-          </div>
-        </div>
+        <ComposeTweet />
       </div>
       <div className="flex flex-col">
         {Array.from({ length: 5 }).map((_, i) => (
