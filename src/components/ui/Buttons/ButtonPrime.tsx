@@ -14,7 +14,7 @@ const ButtonPrime: FC<IButtonPrimeProps> = ({
     <button
       onClick={onClick}
       type={type || "button"}
-      className={`rounded-full flex items-center text-white justify-center bg-primary text-center hover:bg-opacity-80 transition duration-200 ${className}`}
+      className={`rounded-full flex items-center ${className} text-white justify-center bg-primary text-center hover:bg-primary/90 transition duration-200`}
     >
       {isTwitterLogo && <BsTwitter />}
       {!isTwitterLogo && title}

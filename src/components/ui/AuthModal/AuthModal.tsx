@@ -24,7 +24,6 @@ export default function AuthModal({ isAuth }: IAuthModalProps) {
   };
   return (
     <>
-      <Toaster position="top-center" richColors />
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="text-center">
           <h3>Please sign in to access all features</h3>

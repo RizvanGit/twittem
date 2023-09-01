@@ -1,5 +1,4 @@
 "use client";
-import { ButtonPrime } from "..";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { ILoginProps } from "@/types";

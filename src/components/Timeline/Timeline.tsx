@@ -1,20 +1,23 @@
-"use client";
-import { FC } from "react";
 import { ButtonPrime, Search, ComposeTweet } from "@/components";
 import { BsChat, BsDot, BsThreeDots } from "react-icons/bs";
 import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 import { IoShareOutline, IoStatsChart } from "react-icons/io5";
-import NewTweet from "@/app/tweet/new-tweet";
+import { Toaster } from "sonner";
+import fetchTweets from "@/app/tweets/fetchTweets";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
-const Timeline: FC = () => {
+dayjs.extend(relativeTime);
+
+const Timeline = async () => {
+  const tweets = await fetchTweets();
+
   return (
     <section className="flex w-full max-w-[600px] h-full min-h-screen flex-col border-x-2 border-x-gray-700/60">
+      <Toaster />
       <div className="sticky top-0">
-        <div className="flex items-center justify-between">
-          <h1
-            onClick={() => window.scrollTo({ top: 0 })}
-            className="text-xl font-bold p-4 backdrop-blur cursor-pointer bg-black/10"
-          >
+        <div className="flex items-stretch justify-between">
+          <h1 className="text-xl font-bold p-4 w-full backdrop-blur cursor-pointer bg-black/10">
             Home
           </h1>
         </div>
@@ -28,66 +31,62 @@ const Timeline: FC = () => {
         <ComposeTweet />
       </div>
       <div className="flex flex-col">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div
-            key={i}
-            className="px-1 sm:px-4 py-2 border-b-2 border-b-gray-700/60 flex space-x-2 sm:space-x-4"
-          >
-            <div className="sm:block hidden mt-1">
-              <div className="w-10 h-10 bg-slate-200 rounded-full"></div>
-            </div>
-            <div className="flex flex-col">
-              <div className="flex mt-2 items-center justify-between">
-                <div className="flex items-center space-x-1 sm:space-x-2">
-                  <div className="block sm:hidden w-10 h-10 bg-slate-200 rounded-full"></div>
-                  <div className="flex items-center sm:flex-row sm:space-x-2 flex-col justify-start">
-                    <div className="font-bold">Club of Coders</div>
+        {tweets &&
+          tweets.reverse().map((tweet) => (
+            <div
+              key={tweet.id}
+              className="px-1 sm:px-4 py-2 border-b-2 border-b-gray-700/60 flex space-x-2 sm:space-x-4"
+            >
+              <div className="sm:block hidden mt-1">
+                <div className="w-10 h-10 bg-slate-200 rounded-full"></div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex mt-2 items-center justify-between">
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <div className="block sm:hidden w-10 h-10 bg-slate-200 rounded-full"></div>
+                    <div className="flex items-center sm:flex-row sm:space-x-2 flex-col justify-start">
+                      <div className="font-bold">
+                        {tweet.profiles.full_name ?? ""}
+                      </div>
+                      <div className="text-sm text-secondary-foreground">
+                        {tweet.profiles.username}
+                      </div>
+                    </div>
+                    <div className="text-gray-200/60">
+                      <BsDot />
+                    </div>
                     <div className="text-sm text-secondary-foreground">
-                      @clubofcoders
+                      {dayjs(tweet.created_at).fromNow()}
                     </div>
                   </div>
-                  <div className="text-gray-200/60">
-                    <BsDot />
-                  </div>
-                  <div className="text-sm text-secondary-foreground">
-                    2 hours ago
+                  <div className="text-secondary-foreground rounded-full p-2 hover:bg-white/10 transition duration-200 cursor-pointer">
+                    <BsThreeDots />
                   </div>
                 </div>
-                <div className="text-secondary-foreground rounded-full p-2 hover:bg-white/10 transition duration-200 cursor-pointer">
-                  <BsThreeDots />
+                <div className="text-foreground text-sm font-normal mt-2">
+                  {tweet.text}
                 </div>
-              </div>
-              <div className="text-foreground text-sm font-normal mt-2">
-                Lorem ipsum dolor sit amet, officia excepteur ex fugiat
-                reprehenderit enim labore culpa sint ad nisi Lorem pariatur
-                mollit ex esse exercitation amet. Nisi anim cupidatat excepteur
-                officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip
-                amet voluptate voluptate dolor minim nulla est proident. Nostrud
-                officia pariatur ut officia. Sit irure elit esse ea nulla sunt
-                ex occaecat reprehenderit commodo officia dolor Lorem duis
-                laboris cupidatat officia voluptate.
-              </div>
-              <div className="bg-slate-400 aspect-square w-full h-80 rounded-xl mt-2"></div>
-              <div className="flex items-center justify-start space-x-10 w-full text-lg mt-2">
-                <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
-                  <BsChat />
-                </div>
-                <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
-                  <AiOutlineRetweet />
-                </div>
-                <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
-                  <AiOutlineHeart />
-                </div>
-                <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
-                  <IoStatsChart />
-                </div>
-                <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
-                  <IoShareOutline />
+                <div className="bg-slate-400 aspect-square w-full h-80 rounded-xl mt-2"></div>
+                <div className="flex items-center justify-start space-x-10 w-full text-lg mt-2">
+                  <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
+                    <BsChat />
+                  </div>
+                  <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
+                    <AiOutlineRetweet />
+                  </div>
+                  <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
+                    <AiOutlineHeart />
+                  </div>
+                  <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
+                    <IoStatsChart />
+                  </div>
+                  <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
+                    <IoShareOutline />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </section>
   );

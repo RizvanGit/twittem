@@ -1,4 +1,4 @@
-import { LeftSideBar, Timeline, Explore, Login, AuthModal } from "@/components";
+import { LeftSideBar, Timeline, Explore, AuthModal } from "@/components";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -10,11 +10,8 @@ export default async function Home() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const { data, error } = await supabase.auth.getUser();
-  console.log("HOME, USER: ", data);
-
   return (
-    <>
+    <section>
       <AuthModal isAuth={!!session} />
       <div className="flex flex-col items-center">
         <div className="w-full h-full flex justify-center items-center">
@@ -29,7 +26,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }
-//2-10-00
