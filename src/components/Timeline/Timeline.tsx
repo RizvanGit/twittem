@@ -2,10 +2,10 @@ import { ButtonPrime, Search, ComposeTweet } from "@/components";
 import { BsChat, BsDot, BsThreeDots } from "react-icons/bs";
 import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 import { IoShareOutline, IoStatsChart } from "react-icons/io5";
-import { Toaster } from "sonner";
 import fetchTweets from "@/app/tweets/fetchTweets";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { Toaster } from "sonner";
 
 dayjs.extend(relativeTime);
 
@@ -14,7 +14,6 @@ const Timeline = async () => {
 
   return (
     <section className="flex w-full max-w-[600px] h-full min-h-screen flex-col border-x-2 border-x-gray-700/60">
-      <Toaster />
       <div className="sticky top-0">
         <div className="flex items-stretch justify-between">
           <h1 className="text-xl font-bold p-4 w-full backdrop-blur cursor-pointer bg-black/10">
@@ -28,6 +27,7 @@ const Timeline = async () => {
       </div>
       <div className="flex items-stretch p-4 space-x-2 border-y-2 border-y-gray-700/60">
         <div className="h-10 w-10 bg-slate-400 rounded-full flex-none"></div>
+        <Toaster position="top-center" />
         <ComposeTweet />
       </div>
       <div className="flex flex-col">
