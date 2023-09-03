@@ -1,6 +1,6 @@
 "use client";
 
-import { submitTweet } from "@/app/submit-tweet";
+import { submitTweet } from "@/app/tweets";
 import { useState } from "react";
 import { Toaster, toast } from "sonner";
 
