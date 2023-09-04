@@ -1,6 +1,9 @@
 "use server";
 import { randomUUID } from "crypto";
-import { getUser, supabase } from "../supabase";
+import { getUser } from "../supabase";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/lib/database.types";
+import { cookies } from "next/headers";
 
 interface IResult {
   isAuth: boolean;
@@ -8,6 +11,7 @@ interface IResult {
 }
 
 export default async function likeTweet(id: string) {
+  const supabase = createServerComponentClient<Database>({ cookies });
   const { data: userData, error: userError } = await getUser();
   const result: IResult = {
     isAuth: !!userData.user,

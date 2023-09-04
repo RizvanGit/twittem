@@ -6,8 +6,6 @@ import {
 import { AuthError } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
-export const supabase = createServerComponentClient<Database>({ cookies });
-
 interface IResult {
   data: {
     user: User | null;
@@ -19,6 +17,7 @@ interface IResult {
 }
 
 export async function getUser(tweet: string = "") {
+  const supabase = createServerComponentClient<Database>({ cookies });
   const { data, error } = await supabase.auth.getUser();
   const result: IResult = {
     data,

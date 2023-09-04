@@ -2,10 +2,14 @@
 
 import { randomUUID } from "crypto";
 import { revalidatePath } from "next/cache";
-import { getUser, supabase } from "../supabase";
+import { getUser } from "../supabase";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/lib/database.types";
+import { cookies } from "next/headers";
 
 export async function submitTweet(formData: FormData) {
   const tweet = formData.get("tweet");
+  const supabase = createServerComponentClient<Database>({ cookies });
   const user = await getUser(tweet?.toString());
 
   if (!user.data.user || user.error) {
