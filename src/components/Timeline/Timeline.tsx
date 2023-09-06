@@ -1,8 +1,13 @@
 import { ButtonPrime, Search, ComposeTweet, Tweet } from "@/components";
 import fetchTweets from "@/app/tweets/fetchTweets";
 import { Toaster } from "sonner";
+import { User } from "@supabase/supabase-js";
 
-const Timeline = async () => {
+interface ITimelineProps {
+  user: User | undefined;
+}
+
+const Timeline = async ({ user }: ITimelineProps) => {
   const tweets = await fetchTweets();
 
   return (
@@ -27,7 +32,7 @@ const Timeline = async () => {
         {tweets &&
           tweets
             .reverse()
-            .map((tweet) => <Tweet key={tweet.id} tweet={tweet} />)}
+            .map((tweet) => <Tweet key={tweet.id} tweet={tweet} user={user} />)}
       </div>
     </section>
   );

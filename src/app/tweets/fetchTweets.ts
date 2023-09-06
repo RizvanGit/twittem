@@ -8,12 +8,7 @@ export default async function fetchTweets() {
   const supabase = createServerComponentClient<Database>({ cookies });
   const { data, error } = await supabase
     .from("tweets")
-    .select(
-      `*,
-          profiles ( 
-    full_name,
-    username)`,
-    )
+    .select("*, profiles(username, full_name)")
     .returns<TweetType[]>();
   if (error) {
     console.log("An error occurred: ", error);

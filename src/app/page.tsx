@@ -9,7 +9,7 @@ export default async function Home() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-
+  console.log(session?.user);
   return (
     <section>
       <AuthModal isAuth={!!session} />
@@ -19,7 +19,7 @@ export default async function Home() {
             <LeftSideBar />
             <main role="main" className="flex w-[990px] items-stretch  shrink">
               <div className="flex w-full min-h-full grow justify-between items-stretch gap-2">
-                <Timeline />
+                <Timeline user={session?.user} />
                 <Explore />
               </div>
             </main>

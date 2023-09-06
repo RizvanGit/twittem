@@ -1,34 +1,26 @@
-"use client";
-import { FC, useTransition } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { likeTweet } from "@/app/tweets";
 
 import { BsChat, BsDot, BsThreeDots } from "react-icons/bs";
-import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
+import { AiOutlineRetweet } from "react-icons/ai";
 import { IoShareOutline, IoStatsChart } from "react-icons/io5";
 import { TweetProps } from "@/types";
-import { toast } from "sonner";
+import { LikeButton } from "..";
+import { getLikes } from "@/app/tweets/likeTweet";
+import { User } from "@supabase/supabase-js";
 
 dayjs.extend(relativeTime);
 
-const Tweet: FC<TweetProps> = ({ tweet }) => {
-  let [isLikePending, startTransition] = useTransition();
-
-  const onLikeHandler = (id: string) => {
-    startTransition(() => {
-      const result = likeTweet(id);
-      result.then((res) => {
-        console.log("LIKE TWEET RETURN ReS: ", res);
-        if (!res.isAuth) {
-          toast.error("Please, Log in");
-        }
-        if (res.isError) {
-          toast.error("Error while inserting data");
-        }
-      });
-    });
-  };
+const Tweet = async ({ tweet, user }: TweetProps) => {
+  const getTweetLikesCount = await getLikes(tweet.id);
+  let count = getTweetLikesCount ? getTweetLikesCount.length : 0;
+  let isLiked: boolean = false;
+  if (getTweetLikesCount) {
+    console.log("GET TWEET LIKES: ", getTweetLikesCount);
+    if (user) {
+      isLiked = getTweetLikesCount[0].user_id === user.id;
+    }
+  }
   return (
     <div className="px-1 sm:px-4 py-2 border-b-2 border-b-gray-700/60 flex space-x-2 sm:space-x-4">
       <div className="sm:block hidden mt-1">
@@ -66,12 +58,7 @@ const Tweet: FC<TweetProps> = ({ tweet }) => {
           <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <AiOutlineRetweet />
           </div>
-          <button
-            onClick={() => onLikeHandler(tweet.id)}
-            className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200"
-          >
-            <AiOutlineHeart />
-          </button>
+          <LikeButton tweetId={tweet.id} count={count} isLiked={isLiked} />
           <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <IoStatsChart />
           </div>

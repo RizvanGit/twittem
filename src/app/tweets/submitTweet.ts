@@ -10,7 +10,7 @@ import { cookies } from "next/headers";
 export async function submitTweet(formData: FormData) {
   const tweet = formData.get("tweet");
   const supabase = createServerComponentClient<Database>({ cookies });
-  const user = await getUser(tweet?.toString());
+  const user = await getUser({ tweet: tweet?.toString() });
 
   if (!user.data.user || user.error) {
     return user;
