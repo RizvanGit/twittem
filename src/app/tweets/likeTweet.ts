@@ -10,9 +10,9 @@ interface IResult {
   isAuth: boolean;
   isError: string | undefined;
 }
+const supabase = createServerComponentClient<Database>({ cookies });
 
 export default async function likeTweet(id: string) {
-  const supabase = createServerComponentClient<Database>({ cookies });
   const { data: userData, error: userError } = await getUser({});
   const result: IResult = {
     isAuth: !!userData.user,
@@ -32,8 +32,6 @@ export default async function likeTweet(id: string) {
 }
 
 export async function getLikes(tweetId: string) {
-  const supabase = createServerComponentClient<Database>({ cookies });
-
   const { data: likesData, error: likesError } = await supabase
     .from("likes")
     .select("*")
@@ -41,5 +39,18 @@ export async function getLikes(tweetId: string) {
   if (!likesData || likesError || likesData.length === 0) {
     return null;
   }
+  console.log("GET LIKES DATA: ", likesData);
   return likesData;
+}
+
+export async function removeLike(tweetId: string, userId: string) {
+  const { error } = await supabase
+    .from("likes")
+    .delete()
+    .eq("tweet_id", tweetId)
+    .eq("user_id", userId);
+  revalidatePath("/");
+  if (error) {
+    console.log("An error occurred while removing like from tweet: ", error);
+  }
 }

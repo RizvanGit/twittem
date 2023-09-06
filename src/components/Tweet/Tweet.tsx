@@ -15,6 +15,8 @@ const Tweet = async ({ tweet, user }: TweetProps) => {
   const getTweetLikesCount = await getLikes(tweet.id);
   let count = getTweetLikesCount ? getTweetLikesCount.length : 0;
   let isLiked: boolean = false;
+  let userId = getTweetLikesCount ? getTweetLikesCount[0].user_id : null;
+
   if (getTweetLikesCount) {
     console.log("GET TWEET LIKES: ", getTweetLikesCount);
     if (user) {
@@ -58,7 +60,12 @@ const Tweet = async ({ tweet, user }: TweetProps) => {
           <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <AiOutlineRetweet />
           </div>
-          <LikeButton tweetId={tweet.id} count={count} isLiked={isLiked} />
+          <LikeButton
+            tweetId={tweet.id}
+            count={count}
+            isLiked={isLiked}
+            userId={userId}
+          />
           <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <IoStatsChart />
           </div>

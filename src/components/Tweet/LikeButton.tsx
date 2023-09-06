@@ -1,29 +1,42 @@
 "use client";
 import { likeTweet } from "@/app/tweets";
+import { removeLike } from "@/app/tweets/likeTweet";
 import { FC, useState, useTransition } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "sonner";
 
 interface ILikeButtonProps {
   tweetId: string;
   isLiked: boolean;
   count: number;
+  userId: string | null;
 }
 
-const LikeButton: FC<ILikeButtonProps> = ({ tweetId, count, isLiked }) => {
+const LikeButton: FC<ILikeButtonProps> = ({
+  tweetId,
+  count,
+  isLiked,
+  userId,
+}) => {
   let [isLikePending, startTransition] = useTransition();
 
   const onLikeHandler = (id: string) => {
     startTransition(() => {
-      const result = likeTweet(id);
-      result.then((res) => {
-        if (!res.isAuth) {
-          toast.error("Please, Log in");
-        } else if (res.isError) {
-          toast.error("Error while inserting data");
-        } else {
+      if (isLiked) {
+        if (userId) {
+          removeLike(tweetId, userId);
         }
-      });
+      } else {
+        const result = likeTweet(id);
+        result.then((res) => {
+          if (!res.isAuth) {
+            toast.error("Please, Log in");
+          } else if (res.isError) {
+            toast.error("Error while inserting data");
+          } else {
+          }
+        });
+      }
     });
   };
   return (
@@ -31,7 +44,7 @@ const LikeButton: FC<ILikeButtonProps> = ({ tweetId, count, isLiked }) => {
       onClick={() => onLikeHandler(tweetId)}
       className="flex items-center space-x-1 rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200"
     >
-      <AiOutlineHeart className={`${isLiked ? "text-red-400" : ""}`} />
+      {isLiked ? <AiFillHeart className="text-red-400" /> : <AiOutlineHeart />}
       <div className="text-sm">{count > 0 ? count : null}</div>
     </button>
   );
