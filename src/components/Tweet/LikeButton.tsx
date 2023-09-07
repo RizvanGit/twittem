@@ -19,7 +19,6 @@ const LikeButton: FC<ILikeButtonProps> = ({
   userId,
 }) => {
   let [isLikePending, startTransition] = useTransition();
-  console.log("TWEET ID: ", tweetId, " IS LIKED?: ", isLiked);
   const onLikeHandler = (id: string) => {
     startTransition(async () => {
       if (isLiked) {

@@ -11,7 +11,10 @@ export default async function fetchTweets() {
     .select("*, profiles(username, full_name)")
     .returns<TweetType[]>();
   if (error) {
-    console.log("An error occurred: ", error);
+    if (error instanceof Error) {
+      console.log("An error occurred: ", error);
+    }
+    console.log("An error occurred: ");
   }
   return data;
 }

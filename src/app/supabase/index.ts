@@ -20,7 +20,6 @@ interface IResult {
 interface IGetUserArghs {
   tweet?: string;
 }
-type GetUserArgs = { tweet?: string } | null;
 
 export async function getUser({ tweet }: IGetUserArghs) {
   const supabase = createServerComponentClient<Database>({ cookies });

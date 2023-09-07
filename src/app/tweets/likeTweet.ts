@@ -53,6 +53,6 @@ export async function removeLike(tweetId: string, userId: string) {
     .eq("user_id", userId);
   revalidatePath("/");
   if (error) {
-    console.log("An error occurred while removing like from tweet: ", error);
+    console.log("An error occurred while removing like from tweet");
   }
 }

@@ -21,8 +21,9 @@ export async function POST(request: Request) {
       },
     },
   });
-  console.log("SING IN DATA: ", data);
-  console.log("SING IN ERROR: ", error);
+  if (error) {
+    console.error("An error occurred: ", error.message);
+  }
 
   return NextResponse.redirect(requestUrl.origin, {
     status: 301,

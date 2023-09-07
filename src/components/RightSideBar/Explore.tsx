@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Search } from "..";
+import { Search, User } from "..";
 
 const Explore: FC = () => {
   return (
@@ -34,21 +34,11 @@ const Explore: FC = () => {
           <div>
             {Array.from({ length: 5 }).map((_, i) => {
               return (
-                <div
+                <User
                   key={i + 200}
-                  className="flex items-center gap-2 cursor-pointer hover:bg-white/10 p-3 last:rounded-b-xl transition duration-150"
-                >
-                  <div className="h-10 w-10 bg-neutral-600 rounded-full"></div>
-                  <div className="flex flex-col">
-                    <div>Other user</div>
-                    <div className="text-sm text-gray-400">@otheruser2331</div>
-                  </div>
-                  <div className="flex justify-end grow">
-                    <button className="rounded-full px-6 py-2 bg-white text-neutral-900 hover:bg-primary hover:text-white transition duration-150">
-                      Follow
-                    </button>
-                  </div>
-                </div>
+                  fullname="Some user"
+                  login="@someuser3331"
+                />
               );
             })}
           </div>
