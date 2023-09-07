@@ -9,7 +9,6 @@ export default async function Home() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  console.log(session?.user);
   return (
     <section>
       <AuthModal isAuth={!!session} />

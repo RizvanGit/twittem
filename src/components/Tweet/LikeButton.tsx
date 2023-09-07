@@ -9,7 +9,7 @@ interface ILikeButtonProps {
   tweetId: string;
   isLiked: boolean;
   count: number;
-  userId: string | null;
+  userId: string | undefined;
 }
 
 const LikeButton: FC<ILikeButtonProps> = ({
@@ -19,23 +19,21 @@ const LikeButton: FC<ILikeButtonProps> = ({
   userId,
 }) => {
   let [isLikePending, startTransition] = useTransition();
-
+  console.log("TWEET ID: ", tweetId, " IS LIKED?: ", isLiked);
   const onLikeHandler = (id: string) => {
-    startTransition(() => {
+    startTransition(async () => {
       if (isLiked) {
         if (userId) {
           removeLike(tweetId, userId);
         }
       } else {
-        const result = likeTweet(id);
-        result.then((res) => {
-          if (!res.isAuth) {
-            toast.error("Please, Log in");
-          } else if (res.isError) {
-            toast.error("Error while inserting data");
-          } else {
-          }
-        });
+        const result = await likeTweet(id);
+        if (!result.isAuth) {
+          toast.error("Please, Log in");
+        } else if (result.isError) {
+          toast.error("Error while inserting data");
+        } else {
+        }
       }
     });
   };
