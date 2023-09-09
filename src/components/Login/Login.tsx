@@ -4,7 +4,7 @@ import { Input } from "../ui/input";
 import { ILoginProps } from "@/types";
 import { FC } from "react";
 
-const Login: FC<ILoginProps> = ({ checkValue }) => {
+const Login: FC<ILoginProps> = ({ checkAuth }) => {
   return (
     <div className="relative">
       <form
@@ -20,13 +20,13 @@ const Login: FC<ILoginProps> = ({ checkValue }) => {
             min="3"
             onBlur={async (e) => {
               const value = e.target.value;
-              if (value.trim().length < 4 && value.length !== 0) {
+              if (value.trim().length < 4) {
                 e.target.classList.remove("border-green-800");
                 e.target.classList.add("border-red-800");
               } else if (e.target.value.length === 0) {
               } else {
                 e.target.classList.remove("border-red-800");
-                checkValue(value);
+                checkAuth(value);
               }
             }}
           />
@@ -59,7 +59,6 @@ const Login: FC<ILoginProps> = ({ checkValue }) => {
       </div> */}
         <div className="space-x-2 flex justify-center">
           <Button>Login</Button>
-          <Button formAction="/auth/sign-up">Sign up</Button>
           <Button formAction="/auth/logout">Logout</Button>
           {/* <button formAction="/auth/sign-up">Sign Up</button> */}
         </div>

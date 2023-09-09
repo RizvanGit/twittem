@@ -11,8 +11,7 @@ export async function POST(request: Request) {
   const supabase = createRouteHandlerClient<Database>({ cookies });
 
   await supabase.auth.signOut();
-
-  return NextResponse.redirect(`${requestUrl.origin}`, {
+  return NextResponse.redirect(`/`, {
     status: 301,
   });
 }

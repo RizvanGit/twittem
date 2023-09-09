@@ -8,10 +8,10 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/lib/database.types";
 
 export default function AuthModal({ isAuth }: IAuthModalProps) {
+  console.log("isAuth PROP: ", isAuth);
   const [isOpen, setIsOpen] = useState(!isAuth);
   const supabase = createClientComponentClient<Database>();
-  const checkValue = async (value: string) => {
-    console.log("CHECK VALUE");
+  const checkAuth = async (value: string) => {
     const { data, error } = await supabase
       .from("profiles")
       .select()
@@ -26,8 +26,13 @@ export default function AuthModal({ isAuth }: IAuthModalProps) {
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="text-center">
-          <h3>Please sign in to access all features</h3>
-          <Login checkValue={checkValue} />
+          <div className="flex flex-col space-y-1">
+            <h2>Please sign in to access all features</h2>
+            <p className="text-sm text-gray-300 italic">
+              Receive a email with a link to log in
+            </p>
+          </div>
+          <Login checkAuth={checkAuth} />
         </DialogContent>
       </Dialog>
     </>

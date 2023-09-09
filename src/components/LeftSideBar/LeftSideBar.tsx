@@ -5,11 +5,18 @@ import { BsThreeDots } from "react-icons/bs";
 import Link from "next/link";
 import { ButtonPrime } from "..";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { Button } from "../ui/button";
+import { BiLogOut } from "react-icons/bi";
 
 let currentWindowWidth: number = window.innerWidth;
 
-const LeftSideBar: FC = () => {
+interface ILeftSideBarProp {
+  isAuth: boolean;
+}
+
+const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
   const size = useWindowSize();
+  console.log("IS AUTH LEFTBAR: ", isAuth);
   let isWidthWide: boolean;
   if (size.width) {
     if (size.width > 1220) {
@@ -31,10 +38,10 @@ const LeftSideBar: FC = () => {
         }`}
     >
       <div
-        className={`fixed top-0 h-full ${isWidthWide ? "w-[275px]" : "w-[75px]"
+        className={`fixed flex flex-col justify-between top-0 h-full ${isWidthWide ? "w-[275px]" : "w-[75px]"
           }`}
       >
-        <div className="flex flex-col w-full  h-full space-y-4 items-stretch mt-4">
+        <div className="flex flex-col w-full space-y-4 items-stretch mt-4">
           {NAVIGATION_ITEMS.map((item) => {
             return (
               <Link
@@ -57,18 +64,37 @@ const LeftSideBar: FC = () => {
             className={`text-2xl ${isWidthWide ? "p-4 m-4" : "py-2 px-1 m-3"}`}
             title="Tweet"
           />
+          {isAuth && (
+            <form
+              method="post"
+              action="/auth/logout"
+              className={`flex space-x-1 justify-center ${isWidthWide ? "text-center width-full" : ""
+                }`}
+            >
+              <Button
+                className={`rounded-full ${isWidthWide ? "bg-transparent" : ""
+                  }`}
+              >
+                <BiLogOut />
+                {isWidthWide && "Logout"}
+              </Button>
+            </form>
+          )}
         </div>
-
-        <button className="flex items-center flex-grow space-x-2 m-4 rounded-full bg-transparent p-4 text-2xl text-center hover:bg-white/20 transition duration-200">
-          <div className="rounded-full bg-slate-400 w-10 h-10"></div>
-          <div className="text-left text-sm">
-            <div className="font-semibold">Club of Coders</div>
-            <div className="text-gray-300">@Clubofcoders</div>
+        {isWidthWide && (
+          <div className="flex justify-center">
+            <button className="flex items-center flex-grow space-x-2 m-4 rounded-full bg-transparent p-4 text-2xl text-center hover:bg-white/20 transition duration-200">
+              <div className="rounded-full bg-slate-400 w-10 h-10"></div>
+              <div className="text-left text-sm">
+                <div className="font-semibold">Rizvan</div>
+                <div className="text-gray-300">@RizvanGit</div>
+              </div>
+              <div className="grow flex justify-end">
+                <BsThreeDots />
+              </div>
+            </button>
           </div>
-          <div className="grow flex justify-end">
-            <BsThreeDots />
-          </div>
-        </button>
+        )}
       </div>
     </header>
   );
