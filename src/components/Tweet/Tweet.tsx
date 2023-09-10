@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-import { BsChat, BsDot, BsThreeDots } from "react-icons/bs";
+import { BsChat, BsDot } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { IoShareOutline, IoStatsChart } from "react-icons/io5";
 import { TweetProps } from "@/types";
-import { LikeButton } from "..";
+import { LikeButton, TweetMenu } from "..";
 import { getLikes } from "@/app/tweets/likeTweet";
 
 dayjs.extend(relativeTime);
@@ -45,8 +45,11 @@ const Tweet = async ({ tweet, user }: TweetProps) => {
               {dayjs(tweet.created_at).fromNow()}
             </div>
           </div>
-          <div className="text-secondary-foreground rounded-full p-2 hover:bg-white/10 transition duration-200 cursor-pointer">
-            <BsThreeDots />
+          <div className="relative">
+            <TweetMenu
+              userId={user ? user.id : ""}
+              tweetAuthId={tweet.user_id}
+            />
           </div>
         </div>
         <div className="text-foreground text-sm font-normal mt-2">

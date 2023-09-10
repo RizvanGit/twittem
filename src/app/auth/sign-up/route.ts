@@ -25,9 +25,6 @@ export async function POST(request: Request) {
     },
   });
 
-  console.log("DATA from signup: ", data);
-  console.log("ERROR from signup: ", error);
-
   return NextResponse.redirect(requestUrl.origin, {
     status: 301,
   });

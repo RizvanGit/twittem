@@ -8,7 +8,6 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/lib/database.types";
 
 export default function AuthModal({ isAuth }: IAuthModalProps) {
-  console.log("isAuth PROP: ", isAuth);
   const [isOpen, setIsOpen] = useState(!isAuth);
   const supabase = createClientComponentClient<Database>();
   const checkAuth = async (value: string) => {

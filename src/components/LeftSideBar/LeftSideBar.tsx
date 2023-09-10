@@ -16,7 +16,6 @@ interface ILeftSideBarProp {
 
 const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
   const size = useWindowSize();
-  console.log("IS AUTH LEFTBAR: ", isAuth);
   let isWidthWide: boolean;
   if (size.width) {
     if (size.width > 1220) {

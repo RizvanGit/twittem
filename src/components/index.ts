@@ -9,6 +9,7 @@ import AuthModal from "./ui/AuthModal/AuthModal";
 import ComposeTweet from "./Tweet/ComposeTweet";
 import LikeButton from "./Tweet/LikeButton";
 import User from "./RightSideBar/User";
+import TweetMenu from "./Tweet/TweetMenu";
 
 export {
   LeftSideBar,
@@ -22,4 +23,5 @@ export {
   ComposeTweet,
   LikeButton,
   User,
+  TweetMenu,
 };
