@@ -1,11 +1,12 @@
 "use client";
+import Link from "next/link";
 import { FC } from "react";
 import { NAVIGATION_ITEMS } from "@/constants";
-import { BsThreeDots } from "react-icons/bs";
-import Link from "next/link";
-import { ButtonPrime } from "..";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { ButtonPrime } from "..";
 import { Button } from "../ui/button";
+
+import { BsThreeDots } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
 
 let currentWindowWidth: number = window.innerWidth;
