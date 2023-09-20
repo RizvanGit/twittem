@@ -82,7 +82,7 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
         </div>
         {isWidthWide && (
           <div className="flex justify-center">
-            <a href="https://github.com/RizvanGit/twittem" className="flex items-center flex-grow space-x-2 m-4 rounded-full bg-transparent p-4 text-2xl text-center hover:bg-white/20 transition duration-200">
+            <a href="https://github.com/RizvanGit/twittem" title="Go to repository" className="flex items-center flex-grow space-x-2 m-4 rounded-full bg-transparent p-4 text-2xl text-center hover:bg-white/20 transition duration-200">
               <div className="rounded-full bg-slate-400 w-10 h-10"></div>
               <div className="text-left text-sm">
                 <div className="font-semibold">Rizvan</div>
