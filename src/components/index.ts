@@ -10,6 +10,7 @@ import ComposeTweet from "./Tweet/ComposeTweet";
 import LikeButton from "./Tweet/LikeButton";
 import User from "./RightSideBar/User";
 import TweetMenu from "./Tweet/TweetMenu";
+import ReplyButton from "./Tweet/ReplyButton";
 
 export {
   LeftSideBar,
@@ -24,4 +25,5 @@ export {
   LikeButton,
   User,
   TweetMenu,
+  ReplyButton
 };

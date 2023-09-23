@@ -16,8 +16,6 @@ interface ITweetMenuProps {
 
 const TweetMenu: FC<ITweetMenuProps> = ({ userId, tweetAuthId }) => {
   const [isAuth, setIsAuth] = useState<boolean>(userId === tweetAuthId);
-  console.log("Author: ", tweetAuthId, ". Current user: ", userId);
-  console.log("Is auth: ", isAuth);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="text-secondary-foreground rounded-full p-2 hover:bg-white/10 transition duration-200 cursor-pointer">

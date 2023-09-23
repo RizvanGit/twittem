@@ -4,6 +4,7 @@ import { ISearchProps } from "./search";
 import { IAuthModalProps } from "./authmodal";
 import { ILoginProps } from "./login";
 import { TweetProps, TweetType } from "./tweet";
+import { IReplyProps } from "./reply";
 
 export type {
   IButtonPrimeProps,
@@ -13,4 +14,5 @@ export type {
   ILoginProps,
   TweetType,
   TweetProps,
+  IReplyProps
 };

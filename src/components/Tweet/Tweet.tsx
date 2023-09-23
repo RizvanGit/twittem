@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-import { BsChat, BsDot } from "react-icons/bs";
+import { BsDot } from "react-icons/bs";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { IoShareOutline, IoStatsChart } from "react-icons/io5";
 import { TweetProps } from "@/types";
-import { LikeButton, TweetMenu } from "..";
+import { LikeButton, ReplyButton, TweetMenu } from "..";
 import { getLikes } from "@/app/tweets/likeTweet";
 
 dayjs.extend(relativeTime);
@@ -56,9 +56,7 @@ const Tweet = async ({ tweet, user }: TweetProps) => {
           {tweet.text}
         </div>
         <div className="flex items-center justify-start space-x-10 w-full text-lg mt-2">
-          <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
-            <BsChat />
-          </div>
+          <ReplyButton tweet={tweet} />
           <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <AiOutlineRetweet />
           </div>
