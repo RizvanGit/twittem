@@ -3,7 +3,7 @@ import { IWindowSize } from "./window-size";
 import { ISearchProps } from "./search";
 import { IAuthModalProps } from "./authmodal";
 import { ILoginProps } from "./login";
-import { TweetProps, TweetType } from "./tweet";
+import { TweetProps, TweetType, ReplyType } from "./tweet";
 import { IReplyProps } from "./reply";
 
 export type {
@@ -14,5 +14,6 @@ export type {
   ILoginProps,
   TweetType,
   TweetProps,
-  IReplyProps
+  IReplyProps,
+  ReplyType
 };

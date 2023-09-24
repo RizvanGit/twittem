@@ -25,5 +25,5 @@ export {
   LikeButton,
   User,
   TweetMenu,
-  ReplyButton
+  ReplyButton,
 };
