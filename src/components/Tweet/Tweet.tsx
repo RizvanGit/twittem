@@ -15,7 +15,6 @@ const Tweet = async ({ tweet, user }: TweetProps) => {
   let count = getTweetLikesCount ? getTweetLikesCount.length : 0;
   let isLiked: boolean = false;
   const userId = user?.id;
-
   if (getTweetLikesCount) {
     if (user) {
       const currentTweet = getTweetLikesCount.find(
@@ -56,7 +55,7 @@ const Tweet = async ({ tweet, user }: TweetProps) => {
           {tweet.text}
         </div>
         <div className="flex items-center justify-start space-x-10 w-full text-lg mt-2">
-          <ReplyButton tweet={tweet} />
+          <ReplyButton tweet={tweet} userId={user ? user.id : ''}/>
           <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <AiOutlineRetweet />
           </div>

@@ -14,14 +14,16 @@ interface IResult {
   isAuth: boolean;
   isError: string | undefined;
   isMessage?: boolean;
+  isReply: boolean;
   isLiked?: boolean;
 }
 
 interface IGetUserArghs {
   tweet?: string;
+  reply?: string;
 }
 
-export async function getUser({ tweet }: IGetUserArghs) {
+export async function getUser({ tweet, reply }: IGetUserArghs) {
   const supabase = createServerComponentClient<Database>({ cookies });
   const { data, error } = await supabase.auth.getUser();
   const result: IResult = {
@@ -30,6 +32,7 @@ export async function getUser({ tweet }: IGetUserArghs) {
     isAuth: !!data.user,
     isError: error?.message,
     isMessage: !!tweet,
+    isReply: !!reply,
   };
 
   return result;
