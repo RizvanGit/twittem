@@ -18,7 +18,7 @@ interface ITweetClientProps extends TweetProps {
     userId: string | undefined,
     isLiked: boolean,
 }
-export const TweetClient: FC<ITweetClientProps> = ({count, isLiked, tweet, userId, user}) => {
+export const TweetClient: FC<ITweetClientProps> = ({count, isLiked, tweet, userId, user, fromReplies}) => {
     const router = useRouter()
     const onTweetClickHandler = (e: MouseEvent<HTMLDivElement>) => {
         router.push(`tweet/${tweet.id}`)
@@ -47,6 +47,8 @@ export const TweetClient: FC<ITweetClientProps> = ({count, isLiked, tweet, userI
             <TweetMenu
               userId={user ? user.id : ""}
               tweetAuthId={tweet.user_id}
+              tweetId={tweet.id}
+              fromReplies={fromReplies || false}
             />
           </div>
         </div>

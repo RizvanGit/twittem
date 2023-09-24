@@ -2,11 +2,10 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { LeftSideBar, Timeline, Explore, AuthModal } from "@/components";
+import { LeftSideBar, Explore, AuthModal } from "@/components";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { Wrapper } from "./Wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 

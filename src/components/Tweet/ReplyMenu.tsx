@@ -8,19 +8,18 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { FC, useState } from "react";
-import { deleteTweet } from "@/app/tweets/deleteTweet";
+import { deleteReply } from "@/app/tweets/deleteReply";
 
 interface ITweetMenuProps {
-  tweetAuthId: string;
+  replyAuthId: string;
   userId: string;
-  tweetId: string;
-  fromReplies: boolean;
+  replyId: string;
 }
 
-const TweetMenu: FC<ITweetMenuProps> = ({ userId, tweetAuthId, tweetId, fromReplies }) => {
-  const [isAuth, setIsAuth] = useState<boolean>(userId === tweetAuthId);
-  const onDeleteTweetHandler = () => {
-      deleteTweet(tweetId, userId, fromReplies)
+const ReplyMenu: FC<ITweetMenuProps> = ({ userId, replyAuthId, replyId }) => {
+  const [isAuth, setIsAuth] = useState<boolean>(userId === replyAuthId);
+  const onDeleteReplyHandler = () => {
+     deleteReply(replyId, userId) 
   }
   return (
     <DropdownMenu>
@@ -30,11 +29,11 @@ const TweetMenu: FC<ITweetMenuProps> = ({ userId, tweetAuthId, tweetId, fromRepl
       <DropdownMenuContent align="end" className="bg-black">
         <DropdownMenuSeparator />
         <DropdownMenuItem className="flex justify-center" disabled={!isAuth}>
-          <button onClick={onDeleteTweetHandler} disabled={!isAuth}>Delete</button>
+          <button onClick={onDeleteReplyHandler} disabled={!isAuth}>Delete</button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
 
-export default TweetMenu;
+export default ReplyMenu;

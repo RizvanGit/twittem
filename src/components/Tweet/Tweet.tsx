@@ -2,7 +2,7 @@ import { TweetProps } from "@/types";
 import { getLikes } from "@/app/tweets/likeTweet";
 import { TweetClient } from "./TweetClient";
 
-const Tweet = async ({ tweet, user }: TweetProps) => {
+const Tweet = async ({ tweet, user, fromReplies }: TweetProps) => {
   const getTweetLikesCount = await getLikes(tweet.id);
   let count = getTweetLikesCount ? getTweetLikesCount.length : 0;
   let isLiked: boolean = false;
@@ -18,7 +18,7 @@ const Tweet = async ({ tweet, user }: TweetProps) => {
     }
   }
 
-  return <TweetClient count={count} userId={userId} tweet={tweet} user={user} isLiked={isLiked}/>;
+  return <TweetClient count={count} userId={userId} tweet={tweet} user={user} isLiked={isLiked} fromReplies={fromReplies}/>;
 };
 
 export default Tweet;

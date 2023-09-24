@@ -13,9 +13,11 @@ export type TweetType = Database["public"]["Tables"]["tweets"]["Row"] & {
   >;
 };
 
-export type ReplyType = Database["public"]["Tables"]["replies"]["Row"]
-
+export type ReplyType = Database["public"]["Tables"]["replies"]["Row"] & {
+    profiles: Pick<Database["public"]["Tables"]["profiles"]["Row"], "username">
+} 
 export type TweetProps = {
   tweet: TweetType;
   user: User | undefined;
+  fromReplies?: boolean;
 };

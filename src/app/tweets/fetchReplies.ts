@@ -24,15 +24,15 @@ async function fetchReplies(tweetId: string) {
   
   const {data: dataReplies, error: errorReplies} = await supabase
     .from("replies")
-    .select("*")
+    .select("*, profiles(username)")
     .eq("tweet_id", tweetId)
     .returns<ReplyType[]>();
     
   console.log("REPLIES DATA: ", dataReplies)
-  console.log("REPLIES ERROR: ", errorReplies)
+  console.log("TWEET DATA: ", dataTweet)
   
   const response =  {
-      tweet: dataTweet ? dataTweet[0] : null,
+      tweet: dataTweet,
       replies: dataReplies ? dataReplies : []
   }
     
