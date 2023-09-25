@@ -12,12 +12,10 @@ export async function submitTweet(formData: FormData) {
   const supabase = createServerComponentClient<Database>({ cookies });
   const user = await getUser({ tweet: tweet?.toString() });
 
-  if (!user.data.user || user.error) {
+  if (!user.data.user || user.error || !tweet) {
     return user;
   }
-  if (!tweet) {
-    return user;
-  }
+  
   const { data, error } = await supabase.from("tweets").insert({
     user_id: user.data.user.id,
     text: tweet?.toString(),

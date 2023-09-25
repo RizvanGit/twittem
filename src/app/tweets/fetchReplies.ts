@@ -28,9 +28,6 @@ async function fetchReplies(tweetId: string) {
     .eq("tweet_id", tweetId)
     .returns<ReplyType[]>();
     
-  console.log("REPLIES DATA: ", dataReplies)
-  console.log("TWEET DATA: ", dataTweet)
-  
   const response =  {
       tweet: dataTweet,
       replies: dataReplies ? dataReplies : []

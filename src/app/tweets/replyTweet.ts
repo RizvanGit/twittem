@@ -24,8 +24,6 @@ export async function replyTweet(replyText: string, tweetId: string, userId: str
     text: replyText,
     id: randomUUID(),
   });
-  console.log("DATA REPLY: ", data)
-  console.log("ERROR REPLY", error)
   revalidatePath("/");
   return user;
 }

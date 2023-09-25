@@ -16,7 +16,6 @@ export default async function Page({
     data: { session },
   } = await supabase.auth.getSession();
     const {tweet, replies} = await fetchReplies(params.id)
-    console.log("Replies: ", replies)
     if(!tweet){
         return <div>An error occurred while fetching tweet</div>
     }

@@ -10,6 +10,7 @@ import { TweetProps } from '@/types';
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 dayjs.extend(relativeTime);
 
@@ -22,6 +23,9 @@ export const TweetClient: FC<ITweetClientProps> = ({count, isLiked, tweet, userI
     const router = useRouter()
     const onTweetClickHandler = (e: MouseEvent<HTMLDivElement>) => {
         router.push(`tweet/${tweet.id}`)
+    }
+    const onClickShowToast = () => {
+        toast("Feature not implemented yet")
     }
     return (
     <>
@@ -59,7 +63,7 @@ export const TweetClient: FC<ITweetClientProps> = ({count, isLiked, tweet, userI
         </div>
         <div className="flex items-center justify-start space-x-10 w-full text-lg mt-2">
           <ReplyButton tweet={tweet} userId={user ? user.id : ''}/>
-          <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
+          <div onClick={onClickShowToast} className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <AiOutlineRetweet />
           </div>
           <LikeButton
@@ -68,10 +72,10 @@ export const TweetClient: FC<ITweetClientProps> = ({count, isLiked, tweet, userI
             isLiked={isLiked}
             userId={userId}
           />
-          <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
+          <div onClick={onClickShowToast} className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <IoStatsChart />
           </div>
-          <div className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
+          <div onClick={onClickShowToast} className="rounded-full hover:bg-white/10 p-2 cursor-pointer transition duration-200">
             <IoShareOutline />
           </div>
         </div>
