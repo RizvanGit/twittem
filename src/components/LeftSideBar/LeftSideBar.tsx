@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 
 import { BsThreeDots } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
+import { Toaster, toast } from "sonner";
 
 let currentWindowWidth: number = window.innerWidth;
 
@@ -37,6 +38,7 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
       className={`relative flex flex-col h-screen shrink-0 items-stretch ${isWidthWide ? "w-[275px]" : "w-[75px]"
         }`}
     >
+      <Toaster richColors />
       <div
         className={`fixed flex flex-col justify-between top-0 h-full ${isWidthWide ? "w-[275px]" : "w-[75px]"
           }`}
@@ -44,9 +46,9 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
         <div className="flex flex-col w-full space-y-4 items-stretch mt-4">
           {NAVIGATION_ITEMS.map((item) => {
             return (
-              <Link
-                href={`/${item.title.toLowerCase()}`}
+              <button
                 key={item.title}
+                onClick={() => toast("Feature not implemented yet")}
                 className={`flex items-center w-fit justify-start ${isWidthWide ? "py-2 px-6" : "py-2 px-4 mx-auto"
                   } hover:bg-white/10 transition duration-200 rounded-3xl text-2xl space-x-4 `}
               >
@@ -56,7 +58,7 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
                 {isWidthWide
                   ? item.title !== "Twittem" && <div>{item.title}</div>
                   : ""}
-              </Link>
+              </button>
             );
           })}
           <ButtonPrime
@@ -75,7 +77,7 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
                 className={`rounded-full ${isWidthWide ? "bg-transparent" : ""
                   }`}
               >
-                <BiLogOut />
+                <BiLogOut className="text-xl"/>
                 {isWidthWide && "Logout"}
               </Button>
             </form>
