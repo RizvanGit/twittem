@@ -1,6 +1,6 @@
-import { BiHomeCircle, BiUser } from "react-icons/bi";
-import { HiOutlineHashtag } from "react-icons/hi";
-import { BsBell, BsBookmark, BsEnvelope, BsTwitter } from "react-icons/bs";
+import { BiHomeCircle, BiUser } from "react-icons/bi"
+import { HiOutlineHashtag } from "react-icons/hi"
+import { BsBell, BsBookmark, BsEnvelope, BsTwitter } from "react-icons/bs"
 
 export const NAVIGATION_ITEMS = [
   {
@@ -31,4 +31,4 @@ export const NAVIGATION_ITEMS = [
     title: "Profile",
     icon: BiUser,
   },
-];
+]

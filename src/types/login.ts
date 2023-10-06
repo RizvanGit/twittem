@@ -1,3 +1,3 @@
 export interface ILoginProps {
-  checkAuth: (value: string) => void;
+  checkAuth: (value: string) => void
 }

@@ -1,8 +1,8 @@
-"use client";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { ILoginProps } from "@/types";
-import { FC } from "react";
+"use client"
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
+import { ILoginProps } from "@/types"
+import { FC } from "react"
 
 const Login: FC<ILoginProps> = ({ checkAuth }) => {
   return (
@@ -19,14 +19,14 @@ const Login: FC<ILoginProps> = ({ checkAuth }) => {
             name="username"
             min="3"
             onBlur={async (e) => {
-              const value = e.target.value;
+              const value = e.target.value
               if (value.trim().length < 4) {
-                e.target.classList.remove("border-green-800");
-                e.target.classList.add("border-red-800");
+                e.target.classList.remove("border-green-800")
+                e.target.classList.add("border-red-800")
               } else if (e.target.value.length === 0) {
               } else {
-                e.target.classList.remove("border-red-800");
-                checkAuth(value);
+                e.target.classList.remove("border-red-800")
+                checkAuth(value)
               }
             }}
           />
@@ -38,13 +38,13 @@ const Login: FC<ILoginProps> = ({ checkAuth }) => {
             type="email"
             name="email"
             onBlur={(e) => {
-              const value = e.target.value;
+              const value = e.target.value
               if (value.includes("@") && value.length > 3) {
-                e.target.classList.remove("border-red-800");
-                e.target.classList.add("border-green-800");
+                e.target.classList.remove("border-red-800")
+                e.target.classList.add("border-green-800")
               } else {
-                e.target.classList.remove("border-green-800");
-                e.target.classList.add("border-red-800");
+                e.target.classList.remove("border-green-800")
+                e.target.classList.add("border-red-800")
               }
             }}
           />
@@ -64,7 +64,7 @@ const Login: FC<ILoginProps> = ({ checkAuth }) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

@@ -1,15 +1,15 @@
-"use client";
-import { likeTweet } from "@/app/tweets";
-import { removeLike } from "@/app/tweets/likeTweet";
-import { FC, useState, useTransition } from "react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { toast } from "sonner";
+"use client"
+import { likeTweet } from "@/app/tweets"
+import { removeLike } from "@/app/tweets/likeTweet"
+import { FC, useState, useTransition } from "react"
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
+import { toast } from "sonner"
 
 interface ILikeButtonProps {
-  tweetId: string;
-  isLiked: boolean;
-  count: number;
-  userId: string | undefined;
+  tweetId: string
+  isLiked: boolean
+  count: number
+  userId: string | undefined
 }
 
 const LikeButton: FC<ILikeButtonProps> = ({
@@ -18,24 +18,24 @@ const LikeButton: FC<ILikeButtonProps> = ({
   isLiked,
   userId,
 }) => {
-  let [isLikePending, startTransition] = useTransition();
+  let [isLikePending, startTransition] = useTransition()
   const onLikeHandler = (id: string) => {
     startTransition(async () => {
       if (isLiked) {
         if (userId) {
-          removeLike(tweetId, userId);
+          removeLike(tweetId, userId)
         }
       } else {
-        const result = await likeTweet(id);
+        const result = await likeTweet(id)
         if (!result.isAuth) {
-          toast.error("Please, Log in");
+          toast.error("Please, Log in")
         } else if (result.isError) {
-          toast.error("Error while inserting data");
+          toast.error("Error while inserting data")
         } else {
         }
       }
-    });
-  };
+    })
+  }
   return (
     <button
       onClick={() => onLikeHandler(tweetId)}
@@ -44,7 +44,7 @@ const LikeButton: FC<ILikeButtonProps> = ({
       {isLiked ? <AiFillHeart className="text-red-400" /> : <AiOutlineHeart />}
       <div className="text-sm">{count > 0 ? count : null}</div>
     </button>
-  );
-};
+  )
+}
 
-export default LikeButton;
+export default LikeButton

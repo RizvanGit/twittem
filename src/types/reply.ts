@@ -1,6 +1,6 @@
-import { TweetType } from ".";
+import { TweetType } from "."
 
 export interface IReplyProps {
-    tweet: TweetType;
-    userId: string;
-} 
+  tweet: TweetType
+  userId: string
+}

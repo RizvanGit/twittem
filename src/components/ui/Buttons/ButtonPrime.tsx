@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC } from "react"
 
-import { IButtonPrimeProps } from "@/types";
-import { BsTwitter } from "react-icons/bs";
+import { IButtonPrimeProps } from "@/types"
+import { BsTwitter } from "react-icons/bs"
 
 const ButtonPrime: FC<IButtonPrimeProps> = ({
   title,
@@ -19,7 +19,7 @@ const ButtonPrime: FC<IButtonPrimeProps> = ({
       {isTwitterLogo && <BsTwitter />}
       {!isTwitterLogo && title}
     </button>
-  );
-};
+  )
+}
 
-export default ButtonPrime;
+export default ButtonPrime

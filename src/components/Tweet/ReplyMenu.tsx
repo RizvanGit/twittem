@@ -1,25 +1,25 @@
-"use client";
-import { BsThreeDots } from "react-icons/bs";
+"use client"
+import { BsThreeDots } from "react-icons/bs"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { FC, useState } from "react";
-import { deleteReply } from "@/app/tweets/deleteReply";
+} from "../ui/dropdown-menu"
+import { FC, useState } from "react"
+import { deleteReply } from "@/app/tweets/deleteReply"
 
 interface ITweetMenuProps {
-  replyAuthId: string;
-  userId: string;
-  replyId: string;
+  replyAuthId: string
+  userId: string
+  replyId: string
 }
 
 const ReplyMenu: FC<ITweetMenuProps> = ({ userId, replyAuthId, replyId }) => {
-  const [isAuth, setIsAuth] = useState<boolean>(userId === replyAuthId);
+  const [isAuth, setIsAuth] = useState<boolean>(userId === replyAuthId)
   const onDeleteReplyHandler = () => {
-     deleteReply(replyId, userId) 
+    deleteReply(replyId, userId)
   }
   return (
     <DropdownMenu>
@@ -29,11 +29,13 @@ const ReplyMenu: FC<ITweetMenuProps> = ({ userId, replyAuthId, replyId }) => {
       <DropdownMenuContent align="end" className="bg-black">
         <DropdownMenuSeparator />
         <DropdownMenuItem className="flex justify-center" disabled={!isAuth}>
-          <button onClick={onDeleteReplyHandler} disabled={!isAuth}>Delete</button>
+          <button onClick={onDeleteReplyHandler} disabled={!isAuth}>
+            Delete
+          </button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
+  )
+}
 
-export default ReplyMenu;
+export default ReplyMenu

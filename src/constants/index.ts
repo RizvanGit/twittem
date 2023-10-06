@@ -1,3 +1,3 @@
-import { NAVIGATION_ITEMS } from "./navigation";
+import { NAVIGATION_ITEMS } from "./navigation"
 
-export { NAVIGATION_ITEMS };
+export { NAVIGATION_ITEMS }

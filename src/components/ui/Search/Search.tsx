@@ -1,6 +1,6 @@
-import { ISearchProps } from "@/types";
-import { FC } from "react";
-import { BsSearch } from "react-icons/bs";
+import { ISearchProps } from "@/types"
+import { FC } from "react"
+import { BsSearch } from "react-icons/bs"
 
 const Search: FC<ISearchProps> = ({ id, className }) => {
   return (
@@ -18,7 +18,7 @@ const Search: FC<ISearchProps> = ({ id, className }) => {
         <BsSearch className="w-5 h-5" />
       </label>
     </div>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search

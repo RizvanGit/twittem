@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Search, User } from "..";
+import { FC } from "react"
+import { Search, User } from ".."
 
 const Explore: FC = () => {
   return (
@@ -25,7 +25,7 @@ const Explore: FC = () => {
                   <div className="font-bold text-lg">#trending {i + 1}</div>
                   <div className="text-xs text-secondary-foreground">30.2k</div>
                 </div>
-              );
+              )
             })}
           </div>
         </div>
@@ -39,13 +39,13 @@ const Explore: FC = () => {
                   fullname="Some user"
                   login="@someuser3331"
                 />
-              );
+              )
             })}
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Explore;
+export default Explore

@@ -1,4 +1,4 @@
 export interface IWindowSize {
-  width: number | undefined;
-  height: number | undefined;
+  width: number | undefined
+  height: number | undefined
 }

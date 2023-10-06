@@ -1,14 +1,14 @@
-import { ButtonPrime, Search, ComposeTweet, Tweet } from "@/components";
-import fetchTweets from "@/app/tweets/fetchTweets";
-import { Toaster } from "sonner";
-import { User } from "@supabase/supabase-js";
+import { ButtonPrime, Search, ComposeTweet, Tweet } from "@/components"
+import fetchTweets from "@/app/tweets/fetchTweets"
+import { Toaster } from "sonner"
+import { User } from "@supabase/supabase-js"
 
 interface ITimelineProps {
-  user: User | undefined;
+  user: User | undefined
 }
 
 const Timeline = async ({ user }: ITimelineProps) => {
-  const tweets = await fetchTweets();
+  const tweets = await fetchTweets()
 
   return (
     <section className="flex w-full max-w-[600px] h-full min-h-screen flex-col border-x-2 border-x-gray-700/60">
@@ -35,7 +35,7 @@ const Timeline = async ({ user }: ITimelineProps) => {
             .map((tweet) => <Tweet key={tweet.id} tweet={tweet} user={user} />)}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Timeline;
+export default Timeline

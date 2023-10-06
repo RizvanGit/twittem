@@ -1,26 +1,26 @@
-"use client";
-import { IAuthModalProps } from "@/types";
-import { Dialog, DialogContent } from "../dialog";
-import { Toaster, toast } from "sonner";
-import { Login } from "@/components";
-import { useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { Database } from "@/lib/database.types";
+"use client"
+import { IAuthModalProps } from "@/types"
+import { Dialog, DialogContent } from "../dialog"
+import { Toaster, toast } from "sonner"
+import { Login } from "@/components"
+import { useState } from "react"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { Database } from "@/lib/database.types"
 
 export default function AuthModal({ isAuth }: IAuthModalProps) {
-  const [isOpen, setIsOpen] = useState(!isAuth);
-  const supabase = createClientComponentClient<Database>();
+  const [isOpen, setIsOpen] = useState(!isAuth)
+  const supabase = createClientComponentClient<Database>()
   const checkAuth = async (value: string) => {
     const { data, error } = await supabase
       .from("profiles")
       .select()
-      .eq("username", value);
+      .eq("username", value)
     if (data && data?.length > 0) {
-      toast("User founded. You can login");
+      toast("User founded. You can login")
     } else {
-      toast("No such user, you can sign up");
+      toast("No such user, you can sign up")
     }
-  };
+  }
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -35,5 +35,5 @@ export default function AuthModal({ isAuth }: IAuthModalProps) {
         </DialogContent>
       </Dialog>
     </>
-  );
+  )
 }

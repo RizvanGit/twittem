@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { submitTweet } from "@/app/tweets";
-import { useState } from "react";
-import { Toaster, toast } from "sonner";
+import { submitTweet } from "@/app/tweets"
+import { useState } from "react"
+import { Toaster, toast } from "sonner"
 
 const ComposeTweet = () => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>("")
   return (
     <>
       <Toaster richColors />
@@ -13,17 +13,17 @@ const ComposeTweet = () => {
         action={(e) => {
           submitTweet(e).then((res) => {
             if (!res.isAuth) {
-              toast.error("Sign In to be able to tweet a message!");
+              toast.error("Sign In to be able to tweet a message!")
             } else if (!res.isMessage) {
-              toast.error("You cant't tweet an empty message!");
+              toast.error("You cant't tweet an empty message!")
             } else if (res.isError) {
-              toast.error(res.isMessage);
+              toast.error(res.isMessage)
             } else {
-              toast.success("Tweet has been added!");
+              toast.success("Tweet has been added!")
             }
-          });
+          })
 
-          setValue("");
+          setValue("")
         }}
         className="flex flex-col w-full"
       >
@@ -45,7 +45,7 @@ const ComposeTweet = () => {
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default ComposeTweet;
+export default ComposeTweet

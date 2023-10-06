@@ -1,0 +1,12 @@
+build
+coverage
+
+.env
+.local.env
+.yaml
+
+*.config.ts
+*.config.js
+*.types.ts
+
+*.json

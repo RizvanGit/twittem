@@ -1,47 +1,49 @@
-"use client";
-import Link from "next/link";
-import { FC } from "react";
-import { NAVIGATION_ITEMS } from "@/constants";
-import { useWindowSize } from "@/hooks/useWindowSize";
-import { ButtonPrime } from "..";
-import { Button } from "../ui/button";
+"use client"
+import Link from "next/link"
+import { FC } from "react"
+import { NAVIGATION_ITEMS } from "@/constants"
+import { useWindowSize } from "@/hooks/useWindowSize"
+import { ButtonPrime } from ".."
+import { Button } from "../ui/button"
 
-import { BsThreeDots } from "react-icons/bs";
-import { BiLogOut } from "react-icons/bi";
-import { Toaster, toast } from "sonner";
+import { BsThreeDots } from "react-icons/bs"
+import { BiLogOut } from "react-icons/bi"
+import { Toaster, toast } from "sonner"
 
-let currentWindowWidth: number = window.innerWidth;
+let currentWindowWidth: number = window.innerWidth
 
 interface ILeftSideBarProp {
-  isAuth: boolean;
+  isAuth: boolean
 }
 
 const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
-  const size = useWindowSize();
-  let isWidthWide: boolean;
+  const size = useWindowSize()
+  let isWidthWide: boolean
   if (size.width) {
     if (size.width > 1220) {
-      isWidthWide = true;
+      isWidthWide = true
     } else {
-      isWidthWide = false;
+      isWidthWide = false
     }
   } else {
     if (currentWindowWidth > 1220) {
-      isWidthWide = true;
+      isWidthWide = true
     } else {
-      isWidthWide = false;
+      isWidthWide = false
     }
   }
   return (
     <header
       role="banner"
-      className={`relative flex flex-col h-screen shrink-0 items-stretch ${isWidthWide ? "w-[275px]" : "w-[75px]"
-        }`}
+      className={`relative flex flex-col h-screen shrink-0 items-stretch ${
+        isWidthWide ? "w-[275px]" : "w-[75px]"
+      }`}
     >
       <Toaster richColors />
       <div
-        className={`fixed flex flex-col justify-between top-0 h-full ${isWidthWide ? "w-[275px]" : "w-[75px]"
-          }`}
+        className={`fixed flex flex-col justify-between top-0 h-full ${
+          isWidthWide ? "w-[275px]" : "w-[75px]"
+        }`}
       >
         <div className="flex flex-col w-full space-y-4 items-stretch mt-4">
           {NAVIGATION_ITEMS.map((item) => {
@@ -49,8 +51,9 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
               <button
                 key={item.title}
                 onClick={() => toast("Feature not implemented yet")}
-                className={`flex items-center w-fit justify-start ${isWidthWide ? "py-2 px-6" : "py-2 px-4 mx-auto"
-                  } hover:bg-white/10 transition duration-200 rounded-3xl text-2xl space-x-4 `}
+                className={`flex items-center w-fit justify-start ${
+                  isWidthWide ? "py-2 px-6" : "py-2 px-4 mx-auto"
+                } hover:bg-white/10 transition duration-200 rounded-3xl text-2xl space-x-4 `}
               >
                 <div>
                   <item.icon />
@@ -59,7 +62,7 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
                   ? item.title !== "Twittem" && <div>{item.title}</div>
                   : ""}
               </button>
-            );
+            )
           })}
           <ButtonPrime
             isTwitterLogo={isWidthWide ? false : true}
@@ -70,14 +73,16 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
             <form
               method="post"
               action="/auth/logout"
-              className={`flex space-x-1 justify-center ${isWidthWide ? "text-center width-full" : ""
-                }`}
+              className={`flex space-x-1 justify-center ${
+                isWidthWide ? "text-center width-full" : ""
+              }`}
             >
               <Button
-                className={`rounded-full ${isWidthWide ? "bg-transparent" : ""
-                  }`}
+                className={`rounded-full ${
+                  isWidthWide ? "bg-transparent" : ""
+                }`}
               >
-                <BiLogOut className="text-xl"/>
+                <BiLogOut className="text-xl" />
                 {isWidthWide && "Logout"}
               </Button>
             </form>
@@ -85,7 +90,11 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
         </div>
         {isWidthWide && (
           <div className="flex justify-center">
-            <a href="https://github.com/RizvanGit/twittem" title="Go to repository" className="flex items-center flex-grow space-x-2 m-4 rounded-full bg-transparent p-4 text-2xl text-center hover:bg-white/20 transition duration-200">
+            <a
+              href="https://github.com/RizvanGit/twittem"
+              title="Go to repository"
+              className="flex items-center flex-grow space-x-2 m-4 rounded-full bg-transparent p-4 text-2xl text-center hover:bg-white/20 transition duration-200"
+            >
               <div className="rounded-full bg-slate-400 w-10 h-10"></div>
               <div className="text-left text-sm">
                 <div className="font-semibold">Rizvan</div>
@@ -99,7 +108,7 @@ const LeftSideBar: FC<ILeftSideBarProp> = ({ isAuth }) => {
         )}
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default LeftSideBar;
+export default LeftSideBar

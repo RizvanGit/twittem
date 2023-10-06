@@ -1,3 +1,3 @@
 export interface IAuthModalProps {
-  isAuth: boolean;
+  isAuth: boolean
 }

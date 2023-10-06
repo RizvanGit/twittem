@@ -1,4 +1,4 @@
 export interface ISearchProps {
-  className?: string;
-  id: string;
+  className?: string
+  id: string
 }

@@ -1,16 +1,15 @@
-import { ReplyMenu } from '@/components'
-import { ReplyType } from '@/types'
-import React from 'react'
-import { BsDot } from 'react-icons/bs'
+import { ReplyMenu } from "@/components"
+import { ReplyType } from "@/types"
+import React from "react"
+import { BsDot } from "react-icons/bs"
 
 interface IReplyProps {
-    reply: ReplyType,
-    userId: string,
+  reply: ReplyType
+  userId: string
 }
 
-export const Reply = ({reply, userId}: IReplyProps) => {
-    
-    return (
+export const Reply = ({ reply, userId }: IReplyProps) => {
+  return (
     <div className="px-1 sm:px-4 py-2 border-b-2 border-b-gray-700/60 flex space-x-2 sm:space-x-4">
       <div className="sm:block hidden mt-1">
         <div className="w-10 h-10 bg-slate-200 rounded-full"></div>
@@ -34,11 +33,10 @@ export const Reply = ({reply, userId}: IReplyProps) => {
             />
           </div>
         </div>
-        <div
-          className="text-foreground text-sm font-normal mt-2 cursor-pointer hover:bg-white/5 transition-all">
-            {reply.text}
+        <div className="text-foreground text-sm font-normal mt-2 cursor-pointer hover:bg-white/5 transition-all">
+          {reply.text}
         </div>
       </div>
     </div>
-    )
+  )
 }

@@ -1,4 +1,4 @@
-import { InferModel, relations } from "drizzle-orm";
+import { InferModel, relations } from "drizzle-orm"
 import {
   pgTable,
   text,
@@ -9,7 +9,7 @@ import {
   uniqueIndex,
   boolean,
   alias,
-} from "drizzle-orm/pg-core";
+} from "drizzle-orm/pg-core"
 
 export const profiles = pgTable("profiles", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -18,16 +18,16 @@ export const profiles = pgTable("profiles", {
   username: text("username").notNull(),
   fullName: text("full_name").notNull(),
   avatarUrl: text("avatar_url"),
-});
+})
 
-export type Profile = InferModel<typeof profiles>;
+export type Profile = InferModel<typeof profiles>
 
 export const profilesRelations = relations(profiles, ({ many }) => ({
   tweets: many(tweets),
   likes: many(likes),
   bookmarks: many(bookmarks),
   replies: many(replies),
-}));
+}))
 
 export const tweets = pgTable("tweets", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -39,11 +39,11 @@ export const tweets = pgTable("tweets", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
   isReply: boolean("is_reply").notNull().default(false),
   replyId: uuid("reply_id").references((): AnyPgColumn => tweets.id),
-});
+})
 
-export type Tweet = InferModel<typeof tweets>;
+export type Tweet = InferModel<typeof tweets>
 
-export const tweetsReplies = alias(tweets, "tweets_replies");
+export const tweetsReplies = alias(tweets, "tweets_replies")
 
 export const tweetsRelations = relations(tweets, ({ one }) => ({
   profile: one(profiles, {
@@ -54,12 +54,12 @@ export const tweetsRelations = relations(tweets, ({ one }) => ({
     fields: [tweets.replyId],
     references: [tweets.id],
   }),
-}));
+}))
 
 export const hashtags = pgTable("hashtags", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("name").notNull(),
-});
+})
 
 export const tweetHashtag = pgTable(
   "tweet_hashtag",
@@ -77,7 +77,7 @@ export const tweetHashtag = pgTable(
       tweet_hashtag.hashtagId
     ),
   })
-);
+)
 
 export const replies = pgTable("replies", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -87,14 +87,14 @@ export const replies = pgTable("replies", {
     .references(() => profiles.id),
   tweetId: uuid("tweet_id").references(() => tweets.id),
   replyId: uuid("reply_id").references((): AnyPgColumn => replies.id), // self reference
-});
+})
 
 export const repliesRelations = relations(replies, ({ one }) => ({
   profile: one(profiles, {
     fields: [replies.userId],
     references: [profiles.id],
   }),
-}));
+}))
 
 export const likes = pgTable(
   "likes",
@@ -114,16 +114,16 @@ export const likes = pgTable(
       likes.tweetId
     ),
   })
-);
+)
 
-export type Like = InferModel<typeof likes>;
+export type Like = InferModel<typeof likes>
 
 export const likesRelations = relations(likes, ({ one }) => ({
   profile: one(profiles, {
     fields: [likes.userId],
     references: [profiles.id],
   }),
-}));
+}))
 
 export const bookmarks = pgTable(
   "bookmarks",
@@ -143,11 +143,11 @@ export const bookmarks = pgTable(
       bookmarks.tweetId
     ),
   })
-);
+)
 
 export const bookmarksRelations = relations(bookmarks, ({ one }) => ({
   profile: one(profiles, {
     fields: [bookmarks.userId],
     references: [profiles.id],
   }),
-}));
+}))
